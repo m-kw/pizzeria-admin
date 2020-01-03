@@ -26,6 +26,7 @@
 
   - 'tables/booking/new'
     - jw. bez początkowych informacji
+    
   - '/tables/events/:id'
     - musi zawierać wszystkie informacje dot. rezerwacji
     - umożliwia edycję i zapisanie zmian
@@ -56,6 +57,6 @@
   - '/kitchen'
     - lista zamowień w kolejności złożenia
     - lista zawiera
-      - numer stolika lub zamówienia zdalnego, 
+      - numer stolika lub zamówienia zdalnego,
       - pełne info dot. zamówionych dań
     - musi być możliwość oznaczenia zrealizowanego zamówienia

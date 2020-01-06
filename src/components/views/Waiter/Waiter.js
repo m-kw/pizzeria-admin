@@ -11,11 +11,6 @@ const Waiter = ({ id }) => {
       <h2>Waiter view</h2>
       <Link to={`${process.env.PUBLIC_URL}/waiter/order/new`}>New order</Link>
       <Link to={`${process.env.PUBLIC_URL}/waiter/order/${id}`}>Order ID</Link>
-
-      <Switch>
-        <Route exact path={`${process.env.PUBLIC_URL}/waiter/order/new`} component={OrderNew}/>
-        <Route exact path={`${process.env.PUBLIC_URL}/waiter/order/:id`} component={OrderID}/>
-      </Switch>
     </div>
   );
 };

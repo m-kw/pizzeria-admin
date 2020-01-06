@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Events.scss';
+import styles from './Tables.scss';
 
 const EventsID = () => {
   return (

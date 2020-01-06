@@ -9,6 +9,10 @@ import Waiter from './components/views/Waiter/Waiter';
 import Kitchen from './components/views/Kitchen/Kitchen';
 import OrderNew from './components/views/Waiter/OrderNew';
 import OrderID from './components/views/Waiter/OrderID';
+import BookingNew from './components/views/Tables/BookingNew';
+import BookingID from './components/views/Tables/BookingID';
+import EventsNew from './components/views/Tables/EventsNew';
+import EventsID from './components/views/Tables/EventsID';
 
 function App() {
   return (
@@ -22,6 +26,10 @@ function App() {
           <Route exact path={`${process.env.PUBLIC_URL}/kitchen`} component={Kitchen} />
           <Route exact path={`${process.env.PUBLIC_URL}/waiter/order/new`} component={OrderNew}/>
           <Route exact path={`${process.env.PUBLIC_URL}/waiter/order/:id`} component={OrderID}/>
+          <Route exact path={`${process.env.PUBLIC_URL}/tables/booking/new`} component={BookingNew}/>
+          <Route exact path={`${process.env.PUBLIC_URL}/tables/booking/:id`} component={BookingID}/>
+          <Route exact path={`${process.env.PUBLIC_URL}/tables/events/new`} component={EventsNew}/>
+          <Route exact path={`${process.env.PUBLIC_URL}/tables/events/:id`} component={EventsID}/>
         </Switch>
       </MainLayout>
     </BrowserRouter>

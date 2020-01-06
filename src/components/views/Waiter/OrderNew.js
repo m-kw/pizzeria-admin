@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Order.scss';
+import styles from './Waiter.scss';
 
 const OrderNew = () => {
   return (

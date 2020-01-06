@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import OrderNew from '../Order/OrderNew';
-import OrderID from '../Order/OrderID';
+import OrderNew from './OrderNew';
+import OrderID from './OrderID';
 import styles from './Waiter.scss';
 
 const Waiter = ({ id }) => {

@@ -1,9 +1,7 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import OrderNew from './OrderNew';
-import OrderID from './OrderID';
-import styles from './Waiter.scss';
+import styles from './Waiter.module.scss';
 
 const Waiter = ({ id }) => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import styles from './Tables.scss';
+import styles from './Tables.module.scss';
 
 const Tables = ({ id }) => {
   return (

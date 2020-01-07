@@ -1,12 +1,22 @@
 import React from 'react';
-import styles from './Waiter.scss';
+import PropTypes from 'prop-types';
+import styles from './Waiter.module.scss';
 
-const OrderID = () => {
+const OrderID = ({ match }) => {
   return (
-    <div className={styles.component}>
+    <div className={styles.subcomponent}>
       <h2>Order ID view</h2>
+      <span className={styles.id}>{match.params.id}</span>
     </div>
   );
+};
+
+OrderID.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
 };
 
 export default OrderID;

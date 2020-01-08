@@ -1,5 +1,5 @@
 # Dashboard
-    - Collapse załącza się na obu elementach na raz - mają wspólny state - TODO!!!
+    - Collapse załącza się na wszystkich elementach na raz - mają wspólny state - TODO!!!
     - '/'
       - statystyki dzisiejszych zamówień (zdalne, lokalne)
       - lista rezerwacji i eventów zaplanowanych na dzisiaj

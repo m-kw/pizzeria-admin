@@ -25,6 +25,13 @@ const events = [
   {id: 3, hour: '17:00', table: 1, ppl: 3},
 ];
 
+const orderStats = [
+  {id: 1, value: 111},
+  {id: 2, value: 55},
+  {id: 3, value: 123},
+  {id: 4, value: 76},
+];
+
 const Homepage = () => {
   const [open, setOpen] = React.useState(true);
   const handleClick = () => {
@@ -34,11 +41,33 @@ const Homepage = () => {
     <div className={styles.component}>
       <h2>Homepage view</h2>
       <List>
+        <ListItem>
+          <ListItemText primary="Stats" />
+        </ListItem>
+        <ListItem>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>OrderNo</TableCell>
+                <TableCell>Order value</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {orderStats.map(row => (
+                <TableRow key={row.id}>
+                  <TableCell>{row.id}</TableCell>
+                  <TableCell>{row.value}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </ListItem>
+        <Divider />
         <ListItem button onClick={handleClick}>
           <ListItemText primary="Bookings" />
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
-        <Collapse in={open} timeout="auto" unmountOnExit>
+        <Collapse in={!open} timeout="auto" unmountOnExit>
           <List>
             <Table>
               <TableHead>
@@ -73,7 +102,7 @@ const Homepage = () => {
           <ListItemText primary="Events" />
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
-        <Collapse in={open} timeout="auto" unmountOnExit>
+        <Collapse in={!open} timeout="auto" unmountOnExit>
           <List>
             <Table>
               <TableHead>

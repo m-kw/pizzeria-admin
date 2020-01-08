@@ -11,18 +11,29 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import styles from './Tables.module.scss';
 
-const demoContent = [
-  {hour: '12:00', table: 1, tableStatus:'booked'},
-  {hour: '12:30', tableStatus: null},
-  {hour: '13:00', tableStatus: null},
-  {hour: '13:30', tableStatus: 'event'},
-];
+const intervals = ['12:00', '12:30', '13:00'];
 
 const tables = [
-  {id: 1},
-  {id: 2},
-  {id: 3},
-  {id: 4},
+  {id: 1, bookings: {
+    '12:00': {hour: '12:00', booked: true},
+    '12:30': {hour: '12:30', booked: true},
+    '13:00': {hour: '13:00', booked: true},
+  }},
+  {id: 2, bookings: {
+    '12:00': {hour: '12:00', booked: true},
+    '12:30': {hour: '12:30', booked: false},
+    '13:00': {hour: '13:00', booked: true},
+  }},
+  {id: 3, bookings: {
+    '12:00': {hour: '12:00', booked: true},
+    '12:30': {hour: '12:30', booked: false},
+    '13:00': {hour: '13:00', booked: false},
+  }},
+  {id: 4, bookings: {
+    '12:00': {hour: '12:00', booked: true},
+    '12:30': {hour: '12:30', booked: true},
+    '13:00': {hour: '13:00', booked: true},
+  }},
 ];
 
 const Tables = ({ id }) => {
@@ -36,15 +47,15 @@ const Tables = ({ id }) => {
               {tables.map(table => (
                 <TableCell key={table.id}>{table.id}</TableCell>
               ))}
-              <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
+            
           </TableBody>
         </Table>
-        <Link to={`${process.env.PUBLIC_URL}/tables/booking/new`}>New booking</Link>
+        <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/new`}>New booking</Button>
         <Link to={`${process.env.PUBLIC_URL}/tables/booking/${id}`}>Bookings info</Link>
-        <Link to={`${process.env.PUBLIC_URL}/tables/events/new`}>New event</Link>
+        <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/events/new`}>New event</Button>
         <Link to={`${process.env.PUBLIC_URL}/tables/events/${id}`}>Events info</Link>
       </Paper>
     </Container>

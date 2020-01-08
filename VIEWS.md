@@ -1,5 +1,5 @@
 # Dashboard
-
+    - Collapse załącza się na obu elementach na raz - mają wspólny state - TODO!!!
     - '/'
       - statystyki dzisiejszych zamówień (zdalne, lokalne)
       - lista rezerwacji i eventów zaplanowanych na dzisiaj
@@ -26,7 +26,7 @@
 
   - 'tables/booking/new'
     - jw. bez początkowych informacji
-    
+
   - '/tables/events/:id'
     - musi zawierać wszystkie informacje dot. rezerwacji
     - umożliwia edycję i zapisanie zmian

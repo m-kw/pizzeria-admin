@@ -22,10 +22,10 @@ const Login = () => {
           label="Password"
           type="password"
         />
+        <Button className={styles.button} variant="contained" color="primary" component={Link} to={`${process.env.PUBLIC_URL}/`}>
+          LOGIN
+        </Button>
       </form>
-      <Button className={styles.button} variant="contained" color="primary" component={Link} to={`${process.env.PUBLIC_URL}/`}>
-        LOGIN
-      </Button>
     </Container>
   );
 };

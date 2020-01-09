@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
-import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { DatePicker, TimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -14,7 +15,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
 import TableCell from '@material-ui/core/TableCell';
 import Table from '@material-ui/core/Table';
-import styles from './Homepage.scss';
+import styles from './Homepage.module.scss';
 
 const bookings = [
   {id: 1, hour: '12:00', table: 1, ppl: 1},
@@ -49,15 +50,23 @@ const Homepage = () => {
     <Container>
       <Toolbar />
       <div className={styles.component}>
-        <h2>Homepage view</h2>
-        <MuiPickersUtilsProvider>
-          <DatePicker
-            label="date"
-            value={selectedDate}
-            onChange={handleDateChange}
-            animateYearScrolling
-          />
-        </MuiPickersUtilsProvider>
+        <div className={styles.heading}>
+          <h2>Dashboard</h2>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DatePicker
+              className={styles.datePicker}
+              value={selectedDate}
+              onChange={handleDateChange}
+              animateYearScrolling
+            />
+            <TimePicker
+              clearable
+              ampm={false}
+              value={selectedDate}
+              onChange={handleDateChange}
+            />
+          </MuiPickersUtilsProvider>
+        </div>
         <List>
           <ListItem>
             <ListItemText primary="Stats" />

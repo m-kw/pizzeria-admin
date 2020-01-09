@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
 import { DatePicker, TimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';

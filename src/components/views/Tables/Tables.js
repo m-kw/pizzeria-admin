@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { DatePicker, TimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -37,9 +39,29 @@ const tables = [
 ];
 
 const Tables = ({ id }) => {
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const handleDateChange = date => {
+    setSelectedDate(date);
+  };
+
   return (
     <Container maxWidth='lg'>
       <Paper className={styles.component}>
+        <div className={styles.datePicker}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DatePicker
+              value={selectedDate}
+              onChange={handleDateChange}
+              animateYearScrolling
+            />
+            <TimePicker
+              clearable
+              ampm={false}
+              value={selectedDate}
+              onChange={handleDateChange}
+            />
+          </MuiPickersUtilsProvider>
+        </div>
         <Table>
           <TableHead>
             <TableRow>
@@ -50,7 +72,7 @@ const Tables = ({ id }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            
+
           </TableBody>
         </Table>
         <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/new`}>New booking</Button>

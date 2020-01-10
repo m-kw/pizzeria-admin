@@ -20,7 +20,7 @@
       - przypomina widok tygodnia w kalendarzu Google, gdzie w kolumnach zamiast dni są stoliki
       - po kliknięciu rezerwacji lub eventu -> strona szczegółów
 
-  - '/tables/booking/:id'
+  - '/tables/booking/:id' - done
     - musi zawierać wszystkie informacje dot. rezerwacji
     - umożliwia edycję i zapisanie zmian
 
@@ -31,7 +31,7 @@
     - musi zawierać wszystkie informacje dot. rezerwacji
     - umożliwia edycję i zapisanie zmian
 
-  - 'tables/events/new'
+  - 'tables/events/new' - done
     - jw. bez początkowych informacji
 
 # Widok kelnera

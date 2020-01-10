@@ -30,7 +30,7 @@ describe('BookingID component', () => {
   it('should render correct ID', () => {
     const component = shallow(<BookingID {...mockProps}/>);
     const renderedID = component.find('.id').text();
-    expect(renderedID).toEqual(mockProps.match.params.id);
+    expect(renderedID).toEqual(`BookingNo. ${mockProps.match.params.id} details`);
   });
 });
 

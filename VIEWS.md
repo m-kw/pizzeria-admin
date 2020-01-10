@@ -1,10 +1,10 @@
-# Dashboard
+# Dashboardv - done
     - Collapse załącza się na wszystkich elementach na raz - mają wspólny state - TODO!!!
     - '/'
       - statystyki dzisiejszych zamówień (zdalne, lokalne)
       - lista rezerwacji i eventów zaplanowanych na dzisiaj
 
-# Logowanie
+# Logowanie - done
 
   -'/login'
     - pola na login i hasło
@@ -13,7 +13,7 @@
 # Widok dostępności stolików
 
   - '/tables'
-    - wybór daty i godziny
+    - wybór daty i godziny - done
     - tabela z listą rezerwacji oraz wydarzeń
       - kolumna = 1 stolik
       - wiersz = blok 30min.
@@ -36,7 +36,7 @@
 
 # Widok kelnera
 
-  - '/waiter'
+  - '/waiter' - done
     - tabela
       - wiersze = stoliki
       - kolumny = info (status stolika, czas od aktywności)
@@ -52,7 +52,7 @@
   - '/waiter/order/:id'
     - jw.
 
-# Widok kuchni
+# Widok kuchni - done
 
   - '/kitchen'
     - lista zamowień w kolejności złożenia

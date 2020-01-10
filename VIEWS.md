@@ -42,14 +42,14 @@
       - kolumny = info (status stolika, czas od aktywności)
       - ostatnia kolumna = dostępne akcje dla stolika
 
-  - '/waiter/order/new'
+  - '/waiter/order/new' - done
     - numer stolika (edytowalny)
     - menu produktów
     - opcje wybranego produktu
     - zamówienie (zamówione produkty z opcjami i ceną)
     - kwota zamówienia
 
-  - '/waiter/order/:id'
+  - '/waiter/order/:id' - done
     - jw.
 
 # Widok kuchni - done

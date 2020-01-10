@@ -29,6 +29,6 @@ describe('OrderID component', () => {
   it('should render proper ID', () => {
     const component = shallow(<OrderID {...mockProps}/>);
     const renderedID = component.find('.id').text();
-    expect(renderedID).toEqual(mockProps.match.params.id);
+    expect(renderedID).toEqual(`OrderNo. ${mockProps.match.params.id} details`);
   });
 });

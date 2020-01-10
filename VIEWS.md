@@ -24,7 +24,7 @@
     - musi zawierać wszystkie informacje dot. rezerwacji
     - umożliwia edycję i zapisanie zmian
 
-  - 'tables/booking/new'
+  - 'tables/booking/new' - done
     - jw. bez początkowych informacji
 
   - '/tables/events/:id'

@@ -5,6 +5,8 @@ import styles from './Waiter.module.scss';
 import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
 import Table from '@material-ui/core/Table';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
@@ -60,8 +62,6 @@ const Waiter = ({ id }) => {
     <Container>
       <Toolbar />
       <Paper className={styles.component}>
-        <Link to={`${process.env.PUBLIC_URL}/waiter/order/new`}>New order</Link>
-        <Link to={`${process.env.PUBLIC_URL}/waiter/order/${id}`}>Order ID</Link>
         <Table>
           <TableHead>
             <TableRow>
@@ -75,7 +75,7 @@ const Waiter = ({ id }) => {
             {demoContent.map(row => (
               <TableRow key={row.id}>
                 <TableCell component="th" scope="row">
-                  {row.id}
+                  <Link to={`${process.env.PUBLIC_URL}/waiter/order/${id}`}>{row.id}</Link>
                 </TableCell>
                 <TableCell>
                   {row.status}
@@ -94,6 +94,10 @@ const Waiter = ({ id }) => {
             ))}
           </TableBody>
         </Table>
+        <Fab variant="extended" color="primary" component={Link} to={`${process.env.PUBLIC_URL}/waiter/order/new`}>
+          <AddIcon />
+          New order
+        </Fab>
       </Paper>
     </Container>
   );

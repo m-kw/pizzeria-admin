@@ -12,6 +12,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import styles from './Tables.module.scss';
 
 const intervals = ['12:00', '12:30', '13:00'];
@@ -98,7 +100,11 @@ const Tables = ({ id }) => {
                     const isBooked = table.bookings[i].booked;
                     const isEvent = table.events[i].booked;
                     return (
-                      <TableCell key={table.id}>{isBooked? 'booked' : isEvent ? 'event' : null}</TableCell>
+                      <TableCell key={table.id}>{isBooked ?
+                        <Link to={`${process.env.PUBLIC_URL}/tables/booking/${id}`}>booked</Link>
+                        : isEvent ? <Link to={`${process.env.PUBLIC_URL}/tables/events/${id}`}>event</Link>
+                          : null}
+                      </TableCell>
                     );
                   })}
                 </TableRow>
@@ -106,10 +112,14 @@ const Tables = ({ id }) => {
             })}
           </TableBody>
         </Table>
-        <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/new`}>New booking</Button>
-        <Link to={`${process.env.PUBLIC_URL}/tables/booking/${id}`}>Bookings info</Link>
-        <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/events/new`}>New event</Button>
-        <Link to={`${process.env.PUBLIC_URL}/tables/events/${id}`}>Events info</Link>
+        <Fab variant="extended" color="primary" component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/new`}>
+          <AddIcon />
+          New booking
+        </Fab>
+        <Fab variant="extended" color="primary" component={Link} to={`${process.env.PUBLIC_URL}/tables/events/new`}>
+          <AddIcon />
+          New event
+        </Fab>
       </Paper>
     </Container>
   );

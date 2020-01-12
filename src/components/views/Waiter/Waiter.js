@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './Waiter.module.scss';
+import Toolbar from '@material-ui/core/Toolbar';
+import Container from '@material-ui/core/Container';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -55,42 +57,45 @@ const renderActions = status => {
 
 const Waiter = ({ id }) => {
   return (
-    <Paper className={styles.component}>
-      <Link to={`${process.env.PUBLIC_URL}/waiter/order/new`}>New order</Link>
-      <Link to={`${process.env.PUBLIC_URL}/waiter/order/${id}`}>Order ID</Link>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Table</TableCell>
-            <TableCell>Status</TableCell>
-            <TableCell>Order</TableCell>
-            <TableCell>Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {demoContent.map(row => (
-            <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
-                {row.id}
-              </TableCell>
-              <TableCell>
-                {row.status}
-              </TableCell>
-              <TableCell>
-                {row.order && (
-                  <Button to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
-                    {row.order}
-                  </Button>
-                )}
-              </TableCell>
-              <TableCell>
-                {renderActions(row.status)}
-              </TableCell>
+    <Container>
+      <Toolbar />
+      <Paper className={styles.component}>
+        <Link to={`${process.env.PUBLIC_URL}/waiter/order/new`}>New order</Link>
+        <Link to={`${process.env.PUBLIC_URL}/waiter/order/${id}`}>Order ID</Link>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Table</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell>Order</TableCell>
+              <TableCell>Action</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
+          </TableHead>
+          <TableBody>
+            {demoContent.map(row => (
+              <TableRow key={row.id}>
+                <TableCell component="th" scope="row">
+                  {row.id}
+                </TableCell>
+                <TableCell>
+                  {row.status}
+                </TableCell>
+                <TableCell>
+                  {row.order && (
+                    <Button to={`${process.env.PUBLIC_URL}/waiter/order/${row.order}`}>
+                      {row.order}
+                    </Button>
+                  )}
+                </TableCell>
+                <TableCell>
+                  {renderActions(row.status)}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Paper>
+    </Container>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import { DatePicker, TimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
@@ -49,7 +50,7 @@ const Homepage = () => {
   return (
     <Container>
       <Toolbar />
-      <div className={styles.component}>
+      <Paper className={styles.component}>
         <div className={styles.heading}>
           <h2>Dashboard</h2>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -160,7 +161,7 @@ const Homepage = () => {
             </List>
           </Collapse>
         </List>
-      </div>
+      </Paper>
     </Container>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
+import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -31,6 +32,7 @@ const renderActions = status => {
 const Kitchen = () => {
   return (
     <Container maxWidth='lg'>
+      <Toolbar />
       <Paper className={styles.component}>
         <h2>Kitchen view</h2>
         <Table>
@@ -50,7 +52,7 @@ const Kitchen = () => {
                 <TableCell>{row.status}</TableCell>
                 <TableCell>{row.tableOrder}</TableCell>
                 <TableCell>{row.order.join(', ')}</TableCell>
-                <TableCell><Button>{renderActions(row.status)}</Button></TableCell>
+                <TableCell>{renderActions(row.status)}</TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { DatePicker, TimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import Toolbar from '@material-ui/core/Toolbar';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -17,24 +18,40 @@ const intervals = ['12:00', '12:30', '13:00'];
 
 const tables = [
   {id: 1, bookings: {
+    '12:00': {hour: '12:00', booked: false},
+    '12:30': {hour: '12:30', booked: false},
+    '13:00': {hour: '13:00', booked: false},
+  }, events: {
     '12:00': {hour: '12:00', booked: true},
-    '12:30': {hour: '12:30', booked: true},
-    '13:00': {hour: '13:00', booked: true},
+    '12:30': {hour: '12:00', booked: true},
+    '13:00': {hour: '12:00', booked: true},
   }},
   {id: 2, bookings: {
     '12:00': {hour: '12:00', booked: true},
     '12:30': {hour: '12:30', booked: false},
-    '13:00': {hour: '13:00', booked: true},
+    '13:00': {hour: '13:00', booked: false},
+  }, events: {
+    '12:00': {hour: '12:00', booked: false},
+    '12:30': {hour: '12:00', booked: false},
+    '13:00': {hour: '12:00', booked: true},
   }},
   {id: 3, bookings: {
-    '12:00': {hour: '12:00', booked: true},
+    '12:00': {hour: '12:00', booked: false},
     '12:30': {hour: '12:30', booked: false},
     '13:00': {hour: '13:00', booked: false},
+  }, events: {
+    '12:00': {hour: '12:00', booked: false},
+    '12:30': {hour: '12:00', booked: false},
+    '13:00': {hour: '12:00', booked: true},
   }},
   {id: 4, bookings: {
-    '12:00': {hour: '12:00', booked: true},
+    '12:00': {hour: '12:00', booked: false},
     '12:30': {hour: '12:30', booked: true},
     '13:00': {hour: '13:00', booked: true},
+  }, events: {
+    '12:00': {hour: '12:00', booked: false},
+    '12:30': {hour: '12:00', booked: false},
+    '13:00': {hour: '12:00', booked: false},
   }},
 ];
 
@@ -46,6 +63,7 @@ const Tables = ({ id }) => {
 
   return (
     <Container maxWidth='lg'>
+      <Toolbar />
       <Paper className={styles.component}>
         <div className={styles.datePicker}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -72,7 +90,20 @@ const Tables = ({ id }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-
+            {intervals.map(i => {
+              return (
+                <TableRow key={i}>
+                  <TableCell>{i}</TableCell>
+                  {tables.map(table => {
+                    const isBooked = table.bookings[i].booked;
+                    const isEvent = table.events[i].booked;
+                    return (
+                      <TableCell key={table.id}>{isBooked? 'booked' : isEvent ? 'event' : null}</TableCell>
+                    );
+                  })}
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
         <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/new`}>New booking</Button>

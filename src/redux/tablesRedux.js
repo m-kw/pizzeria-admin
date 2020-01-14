@@ -21,11 +21,12 @@ export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 
 /* thunk creators */
 export const fetchFromAPI = () => {
+  const proxyurl = 'https://cors-anywhere.herokuapp.com/';
   return (dispatch, getState) => {
     dispatch(fetchStarted());
 
     Axios
-      .get(`${api.url}/${api.tables}`)
+      .get(proxyurl + `${api.url}/${api.tables}`)
       .then(res => {
         dispatch(fetchSuccess(res.data));
       })

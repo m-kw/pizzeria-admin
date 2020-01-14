@@ -66,6 +66,7 @@ class Waiter extends React.Component {
 
   render() {
     const { loading: { active, error }, tables } = this.props;
+    const tablesArray = Array.from(tables);
 
     if(active || !tables.length){
       return (
@@ -95,7 +96,7 @@ class Waiter extends React.Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {tables.map(row => (
+                {tablesArray.map(row => (
                   <TableRow key={row.id}>
                     <TableCell component="th" scope="row">
                       <Link to={`${process.env.PUBLIC_URL}/waiter/order/${row.id}`}>{row.id}</Link>

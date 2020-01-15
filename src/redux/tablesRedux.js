@@ -39,6 +39,7 @@ export const fetchFromAPI = () => {
 
 export const changeStatusAndUpdateState = (newStatus) => {
   return (dispatch, getState) => {
+    dispatch(fetchStarted());
 
     Axios
       .post(`${api.url}/${api.tables}`, {
@@ -54,14 +55,15 @@ export const changeStatusAndUpdateState = (newStatus) => {
 };
 
 export const changeStatusAndUpdateState2 = (tableID, newStatus, dispatch) => {
-  //dispatch(changeStatusStart())
+
 
   return Axios
     .post(`${api.url}/${api.tables}`, {
       status: newStatus,
     })
     .then(res => {
-      dispatch(changeStatus());
+      dispatch(changeStatus({ tableID, newStatus }));
+      console.log('res', res);
     })
     .catch(err => {
       dispatch(fetchError(err.message || true));
@@ -70,6 +72,7 @@ export const changeStatusAndUpdateState2 = (tableID, newStatus, dispatch) => {
 
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
+  console.log(action);
   switch (action.type) {
     case FETCH_START: {
       return {
@@ -97,6 +100,22 @@ export default function reducer(statePart = [], action = {}) {
           active: false,
           error: action.payload,
         },
+      };
+    }
+    case CHANGE_STATUS: {
+      return {
+        ...statePart,
+        loading: {
+          active: false,
+          error: false,
+        },
+        data: [
+          ...statePart.data,
+          {
+            status: action.payload.newStatus,
+            id: action.payload.tableID,
+          },
+        ],
       };
     }
     default:

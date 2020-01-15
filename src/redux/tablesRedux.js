@@ -37,23 +37,35 @@ export const fetchFromAPI = () => {
   };
 };
 
-export const changeStatusAndUpdateState = () => {
+export const changeStatusAndUpdateState = (newStatus) => {
   return (dispatch, getState) => {
-    dispatch(changeStatus());
 
     Axios
       .post(`${api.url}/${api.tables}`, {
-        data: {
-          status: 'done',
-        },
+        status: newStatus,
       })
       .then(res => {
-        console.log(res);
+        dispatch(changeStatus());
       })
       .catch(err => {
         dispatch(fetchError(err.message || true));
       });
   };
+};
+
+export const changeStatusAndUpdateState2 = (tableID, newStatus, dispatch) => {
+  //dispatch(changeStatusStart())
+
+  return Axios
+    .post(`${api.url}/${api.tables}`, {
+      status: newStatus,
+    })
+    .then(res => {
+      dispatch(changeStatus());
+    })
+    .catch(err => {
+      dispatch(fetchError(err.message || true));
+    });
 };
 
 /* reducer */
@@ -84,14 +96,6 @@ export default function reducer(statePart = [], action = {}) {
         loading: {
           active: false,
           error: action.payload,
-        },
-      };
-    }
-    case CHANGE_STATUS: {
-      return {
-        ...statePart,
-        data: {
-          status: action.payload,
         },
       };
     }

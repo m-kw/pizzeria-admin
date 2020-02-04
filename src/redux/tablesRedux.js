@@ -19,7 +19,7 @@ const CHANGE_STATUS = createActionName('CHANGE_STATUS');
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
-export const changeStatus = payload => ({ payload, type: CHANGE_STATUS });
+export const changeStatus = (id, status) => ({ id, status, type: CHANGE_STATUS });
 
 /* thunk creators */
 export const fetchFromAPI = () => {
@@ -58,11 +58,9 @@ export const changeStatusAndUpdateState2 = (tableID, newStatus, dispatch) => {
 
 
   return Axios
-    .post(`${api.url}/${api.tables}`, {
-      status: newStatus,
-    })
+    .post(`${api.url}/${api.tables}`)
     .then(res => {
-      dispatch(changeStatus({ tableID, newStatus }));
+      dispatch(changeStatus(tableID, newStatus));
       console.log('res', res);
     })
     .catch(err => {
@@ -72,7 +70,7 @@ export const changeStatusAndUpdateState2 = (tableID, newStatus, dispatch) => {
 
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
-  console.log(action);
+  console.log('action', action);
   switch (action.type) {
     case FETCH_START: {
       return {
@@ -109,13 +107,13 @@ export default function reducer(statePart = [], action = {}) {
           active: false,
           error: false,
         },
-        data: [
-          ...statePart.data,
-          {
-            status: action.payload.newStatus,
-            id: action.payload.tableID,
-          },
-        ],
+        data: statePart.data.map(order => {
+          return order.id === action.id ?
+            {...order,
+              status: action.status,
+            }
+            : order;
+        }),
       };
     }
     default:

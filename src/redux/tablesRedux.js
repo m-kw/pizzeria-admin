@@ -61,7 +61,6 @@ export const changeStatusAndUpdateState2 = (tableID, newStatus, dispatch) => {
     .post(`${api.url}/${api.tables}`)
     .then(res => {
       dispatch(changeStatus(tableID, newStatus));
-      console.log('res', res);
     })
     .catch(err => {
       dispatch(fetchError(err.message || true));
@@ -70,7 +69,6 @@ export const changeStatusAndUpdateState2 = (tableID, newStatus, dispatch) => {
 
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
-  console.log('action', action);
   switch (action.type) {
     case FETCH_START: {
       return {
